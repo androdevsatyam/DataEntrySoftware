@@ -21,6 +21,8 @@ dependencies:
 #____________________ date_format: _________________#
   intl: ^0.17.0
   country_state_city_picker: ^1.2.8
+#____________________ g_Sheets: _________________#
+  gsheets: ^0.4.2
 
 flutter_icons:
   windows:

@@ -52,50 +52,6 @@ class Home extends StatelessWidget {
                               ),)
                             ],
                           ),
-                          // Stack(
-                          //   alignment: Alignment.bottomCenter,
-                          //   children: [
-                          //     InkWell(
-                          //       onTap: () {},
-                          //       child: Container(
-                          //           padding: EdgeInsets.all(20),
-                          //           decoration: BoxDecoration(
-                          //               color: ColorRes.blue.withOpacity(0.50),
-                          //               border: Border.all(
-                          //                   color: ColorRes.light_blue5, width: 1),
-                          //               borderRadius: BorderRadius.circular(20)),
-                          //           child: Image.asset(
-                          //             AssetRes.form,
-                          //             height: 140,
-                          //             width: 170,
-                          //             color: ColorRes.white,
-                          //           )),
-                          //     ),
-                          //     Text("New User")
-                          //   ],
-                          // ),
-                          // Stack(
-                          //   alignment: Alignment.bottomCenter,
-                          //   children: [
-                          //     InkWell(
-                          //       onTap: () {},
-                          //       child: Container(
-                          //           padding: EdgeInsets.all(20),
-                          //           decoration: BoxDecoration(
-                          //               color: ColorRes.blue.withOpacity(0.50),
-                          //               border: Border.all(
-                          //                   color: ColorRes.light_blue5, width: 1),
-                          //               borderRadius: BorderRadius.circular(20)),
-                          //           child: Image.asset(
-                          //             AssetRes.form,
-                          //             height: 140,
-                          //             width: 170,
-                          //             color: ColorRes.white,
-                          //           )),
-                          //     ),
-                          //     Text("New User")
-                          //   ],
-                          // ),
                         ],
                       ))
                 ],
