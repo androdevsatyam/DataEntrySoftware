@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:iovuserform/connections/sheet_api.dart';
 import 'package:iovuserform/utils/appres.dart';
 import 'package:iovuserform/utils/snack_bar_widget.dart';
@@ -17,17 +16,23 @@ class EntryFormViewModel extends BaseViewModel {
       invoiceDate = '',
       errorMsg = '',
       diplomaUniversityLocation = '',
+      diplomaUniversityApproved = '',
       diplomaMarksheet = '',
       graduateUniversityLocation = '',
+      graduateUniversityApproved = '',
       graduateMarksheet = '',
       postGraduateUniversityLocation = '',
+      postGraduateUniversityApproved = '',
       postGraduateMarksheet = '',
       professionalStatus = '',
       regOtherRV = '',
       ackEmailSent = '',
       membershipStatus = '',
       proposedMeetingDate = '',
-      financialYear = '';
+      financialYear = '',
+      memberPlan='',
+      assetClass='',
+      membershipClass='';
 
   TextEditingController membershipNo = TextEditingController(),
       name = TextEditingController(),
@@ -45,23 +50,17 @@ class EntryFormViewModel extends BaseViewModel {
       diplomaDegree = TextEditingController(),
       diplomaPassingYear = TextEditingController(),
       diplomaUniversityName = TextEditingController(),
-      diplomaUniversityApproved = TextEditingController(),
       graduateDegree = TextEditingController(),
       graduatePassingYear = TextEditingController(),
       graduateUniversityName = TextEditingController(),
-      graduateUniversityApproved = TextEditingController(),
       postGraduatePassingYear = TextEditingController(),
       postGraduateDegree = TextEditingController(),
       postGraduateUniversityName = TextEditingController(),
-      postGraduateUniversityApproved = TextEditingController(),
       designation = TextEditingController(),
       fromDate = TextEditingController(),
       toDate = TextEditingController(),
       experienceMonths = TextEditingController(),
       experienceYears = TextEditingController(),
-      membershipClass = TextEditingController(),
-      assetClass = TextEditingController(),
-      annualLM = TextEditingController(),
       acknowledgementNo = TextEditingController(),
       approvedbyMem = TextEditingController(),
       remarks = TextEditingController();
@@ -105,7 +104,7 @@ class EntryFormViewModel extends BaseViewModel {
       experienceMonthsFocusNode = FocusNode(),
       experienceYearsFocusNode = FocusNode(),
       membershipClassFocusNode = FocusNode(),
-      assetClassFocusNode = FocusNode(),
+      memberPlanFocusNode = FocusNode(),
       annualLMFocusNode = FocusNode(),
       regOtherRVFocusNode = FocusNode(),
       acknowledgementNoFocusNode = FocusNode(),
@@ -176,6 +175,10 @@ class EntryFormViewModel extends BaseViewModel {
     diplomaUniversityLocation = value;
     notifyListeners();
   }
+  void ondiplomaUniversityApprovedChange(String value) {
+    diplomaUniversityApproved = value;
+    notifyListeners();
+  }
 
   void ondiplomaMarksheetChange(String value) {
     diplomaMarksheet = value;
@@ -186,6 +189,10 @@ class EntryFormViewModel extends BaseViewModel {
     graduateUniversityLocation = value;
     notifyListeners();
   }
+  void ongraduateUniversityApprovedChange(String value) {
+    graduateUniversityApproved = value;
+    notifyListeners();
+  }
 
   void ongraduateMarksheetChange(String value) {
     graduateMarksheet = value;
@@ -194,6 +201,10 @@ class EntryFormViewModel extends BaseViewModel {
 
   void onpostGraduateUniversityLocationChange(String value) {
     postGraduateUniversityLocation = value;
+    notifyListeners();
+  }
+  void onpostGraduateUniversityApprovedChange(String value) {
+    postGraduateUniversityApproved = value;
     notifyListeners();
   }
 
@@ -261,6 +272,16 @@ class EntryFormViewModel extends BaseViewModel {
     financialYear = value;
     notifyListeners();
   }
+  void onmemberPlanChange(String value) {
+    memberPlan = value;
+    notifyListeners();
+  } void onClassAssetChange(String value) {
+    assetClass = value;
+    notifyListeners();
+  } void onClassMemberChange(String value) {
+    membershipClass = value;
+    notifyListeners();
+  }
 
   void onFormSubmit() async {
     if (valid()) {
@@ -288,14 +309,14 @@ class EntryFormViewModel extends BaseViewModel {
         FormDataSet.diplomaMarksheet: diplomaMarksheet,
         FormDataSet.diplomaUniversityName: diplomaUniversityName.text,
         FormDataSet.diplomaUniversityLocation: diplomaUniversityLocation,
-        FormDataSet.diplomaUniversityApproved: diplomaUniversityApproved.text,
+        FormDataSet.diplomaUniversityApproved: diplomaUniversityApproved,
         FormDataSet.diplomaYear: diplomaPassingYear.text,
         FormDataSet.graduationDegree: graduateDegree.text,
         FormDataSet.graduationMarksheet: graduateMarksheet,
         FormDataSet.graduationUniversityName: graduateUniversityName.text,
         FormDataSet.graduationUniversityLocation: graduateUniversityLocation,
         FormDataSet.graduationUniversityApproved:
-            graduateUniversityApproved.text,
+            graduateUniversityApproved,
         FormDataSet.graduationYear: graduatePassingYear.text,
         FormDataSet.PostGraduationDegree: postGraduateDegree.text,
         FormDataSet.PostGraduationMarksheet: postGraduateMarksheet,
@@ -304,18 +325,18 @@ class EntryFormViewModel extends BaseViewModel {
         FormDataSet.PostGraduationUniversityLocation:
             postGraduateUniversityLocation,
         FormDataSet.PostGraduationUniversityApproved:
-            postGraduateUniversityApproved.text,
+            postGraduateUniversityApproved,
         FormDataSet.PostGraduationYear: postGraduatePassingYear.text,
         FormDataSet.universityNameHint:
             '${diplomaUniversityName.text}  ${graduateUniversityName.text}  ${postGraduateUniversityName.text}',
         FormDataSet.universityLocationHint:
-            '${diplomaUniversityLocation}  ${graduateUniversityLocation}  ${postGraduateUniversityLocation}',
+            '$diplomaUniversityLocation  $graduateUniversityLocation  $postGraduateUniversityLocation',
         FormDataSet.universityApprovedHint:
-            '${diplomaUniversityApproved.text}  ${graduateUniversityApproved.text}  ${postGraduateUniversityApproved.text}',
+            '$diplomaUniversityApproved  $graduateUniversityApproved  $postGraduateUniversityApproved',
         FormDataSet.passingYearHint:
             '${diplomaPassingYear.text}  ${graduatePassingYear.text}  ${postGraduatePassingYear.text}',
         FormDataSet.haveMarkSheetHint:
-            '${diplomaMarksheet}  ${graduateMarksheet}  ${postGraduateMarksheet}',
+            '$diplomaMarksheet  $graduateMarksheet  $postGraduateMarksheet',
         FormDataSet.employementStatus: professionalStatus,
         FormDataSet.designation: designation.text,
         FormDataSet.periodFrom: fromDate.text,
@@ -323,9 +344,9 @@ class EntryFormViewModel extends BaseViewModel {
         FormDataSet.experienceInYears: experienceYears.text,
         FormDataSet.experienceInMonths: experienceMonths.text,
         FormDataSet.memberShipStatus: membershipStatus,
-        FormDataSet.membershipClass: membershipClass.text,
-        FormDataSet.assetClass: assetClass.text,
-        FormDataSet.annualLM: annualLM.text,
+        FormDataSet.membershipClass: membershipClass,
+        FormDataSet.assetClass: assetClass,
+        FormDataSet.annualLM: memberPlan,
         FormDataSet.otherRV: regOtherRV,
         FormDataSet.ackNo: acknowledgementNo.text,
         FormDataSet.membershipStatus: membershipStatus,
@@ -343,8 +364,9 @@ class EntryFormViewModel extends BaseViewModel {
               SnackBarWidget.snackBar(message: 'Something Goes wrong!'),
             }
           });
-    } else
+    } else {
       SnackBarWidget.snackBar(message: errorMsg.replaceAll("Enter ", ""));
+    }
     notifyListeners();
   }
 
@@ -433,8 +455,9 @@ class EntryFormViewModel extends BaseViewModel {
       panFocusNode.requestFocus();
       errorMsg = 'invalid ${AppRes.panHint}';
       return false;
-    } else
+    } else {
       return true;
+    }
   }
 
   clear() {
@@ -474,23 +497,23 @@ class EntryFormViewModel extends BaseViewModel {
     diplomaDegree.text = '';
     diplomaPassingYear.text = '';
     diplomaUniversityName.text = '';
-    diplomaUniversityApproved.text = '';
+    diplomaUniversityApproved = '';
     graduateDegree.text = '';
     graduatePassingYear.text = '';
     graduateUniversityName.text = '';
-    graduateUniversityApproved.text = '';
+    graduateUniversityApproved = '';
     postGraduatePassingYear.text = '';
     postGraduateDegree.text = '';
     postGraduateUniversityName.text = '';
-    postGraduateUniversityApproved.text = '';
+    postGraduateUniversityApproved= '';
     designation.text = '';
     fromDate.text = '';
     toDate.text = '';
     experienceMonths.text = '';
     experienceYears.text = '';
-    membershipClass.text = '';
-    assetClass.text = '';
-    annualLM.text = '';
+    membershipClass = '';
+    assetClass = '';
+    memberPlan = '';
     acknowledgementNo.text = '';
     approvedbyMem.text = '';
     remarks.text = '';

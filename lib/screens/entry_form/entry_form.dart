@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:iovuserform/screens/entry_form/entry_form_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import '../../utils/appres.dart';
-import '../../utils/color_res.dart';
 import '../../widgets/top_bar.dart';
 import 'form_fields.dart';
 
@@ -29,7 +25,7 @@ class EntryForm extends StatelessWidget {
               ),
               Expanded(child:
               Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   child: FormFields(
                       errorMsg: model.errorMsg,
                       applicantType: model.applicantType,
@@ -71,8 +67,10 @@ class EntryForm extends StatelessWidget {
                       model.ongraduateUniversityLocationChange,
                       ongraduateMarksheetChange:
                       model.ongraduateMarksheetChange,
-                      onpostGraduateUniversityLocationChange:
-                      model.onpostGraduateUniversityLocationChange,
+                      onpostGraduateUniversityLocationChange: model.onpostGraduateUniversityLocationChange,
+                      onpostGraduateUniversityApprovedChange: model.onpostGraduateUniversityApprovedChange,
+                      ondiplomaUniversityApprovedChange: model.ondiplomaUniversityApprovedChange,
+                      ongraduateUniversityApprovedChange: model.ongraduateUniversityApprovedChange,
                       onpostGraduateMarksheetChange:
                       model.onpostGraduateMarksheetChange,
                       onprofessionalStatusChange:
@@ -84,6 +82,9 @@ class EntryForm extends StatelessWidget {
                       onMemberShipChange: model.onMemberShipChange,
                       onproposedMeetingDateChange:model.onproposedMeetingDateChange,
                       onFinancialYearChange:model.onFinancialYearChange,
+                      onClassMemberChange:model.onClassMemberChange,
+                      onmemberPlanChange:model.onmemberPlanChange,
+                      onClassAssetChange:model.onClassAssetChange,
                       onDOBChange:model.onDOBChange,
                       onDiplomaPassingYearChange:model.onDiplomaPassingYearChange,
                       onGraduatePassingYearChange:model.onGraduatePassingYearChange,
@@ -122,7 +123,7 @@ class EntryForm extends StatelessWidget {
                       experienceYears: model.experienceYears,
                       membershipClass: model.membershipClass,
                       assetClass: model.assetClass,
-                      annualLM: model.annualLM,
+                      memberPlan: model.memberPlan,
                       acknowledgementNo: model.acknowledgementNo,
                       approvedbyMem: model.approvedbyMem,
                       remarks: model.remarks,
@@ -166,7 +167,7 @@ class EntryForm extends StatelessWidget {
                       experienceYearsFocusNode:model.experienceYearsFocusNode,
                       membershipClassFocusNode:model.membershipClassFocusNode,
                       regOtherRVFocusNode:model.regOtherRVFocusNode,
-                      assetClassFocusNode:model.assetClassFocusNode,
+                      memberPlanFocusNode:model.memberPlanFocusNode,
                       annualLMFocusNode:model.annualLMFocusNode,
                       acknowledgementNoFocusNode:model.acknowledgementNoFocusNode,
                       ackEmailSentFocusNode:model.ackEmailSentFocusNode,
@@ -199,49 +200,5 @@ class EntryForm extends StatelessWidget {
             ],
           ));
         });
-  }
-
-  Widget _textField(
-      {required TextEditingController controller,
-      required FocusNode focusNode,
-      required String error,
-      required String hint,
-      required TextInputFormatter inputFormaters,
-      int? maxlength,
-      TextInputType? keyBoardType}) {
-    return Container(
-      margin: EdgeInsets.all(7),
-      height: 40,
-      decoration: BoxDecoration(
-        color: ColorRes.lightGrey2,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: TextField(
-        maxLength: maxlength,
-        controller: controller,
-        focusNode: focusNode,
-        inputFormatters: [inputFormaters],
-        keyboardType: keyBoardType,
-        showCursor: keyBoardType == null ? true : false,
-        textCapitalization: TextCapitalization.words,
-        style: TextStyle(
-          color: ColorRes.darkGrey6,
-          fontSize: 18,
-        ),
-        decoration: InputDecoration(
-          counterText: '',
-          hintText: error == '' ? hint : error,
-          hintStyle: TextStyle(
-            color: error == "" ? ColorRes.darkGrey6 : ColorRes.red,
-          ),
-          labelText: hint.replaceAll("Enter ", ""),
-          border: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: error == "" ? ColorRes.light_blue5 : ColorRes.red,
-                  width: 1)),
-          contentPadding: const EdgeInsets.only(bottom: 10, left: 10),
-        ),
-      ),
-    );
   }
 }

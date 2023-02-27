@@ -42,7 +42,7 @@ class AppRes{
   static const memberShipInfo="Membership Info";
   static const membershipClass="Enter Class of Membership";
   static const assetClass="Class of Asset";
-  static const annualLM="Annual LM";
+  static const memberPlan="Membership Plan";
   static const otherRV="RV Join Before";
   static const ackNo="Ack. No";
   static const membershipStatus="Membership Status";
@@ -56,27 +56,45 @@ class AppRes{
   static const clearSelection="Clear";
   static const userNew="New Membership";
   static const userOld="Member";
+  static const userUpgradation="Upgradation";
   static const modeOffline="Offline";
   static const modeOnline="Online";
   static const genderMale="Male";
-  static const genderFemale="Fe Male";
+  static const genderFemale="FeMale";
   static const genderTrans="TransGender";
   static const yes="Yes";
   static const no="No";
   static const employer="Employer";
-  static const self_employed="Self-Employed";
+  static const selfEmployed="Self-Employed";
   static const approved="Approved";
   static const pending="Pending";
   static const submitted="Submitted";
-
+  static const ugc="UGC";
+  static const aicte="AICTE";
+  static const annualMember="Annual";
+  static const lifeMember="LifeMember";
+  static const associate="Associate";
+  static const fellow="Fellow";
+  static const license="License Act Member";
+  static const studentMember="Student Membership";
+  static const rejection="Rejection";
+  static const landBuilding="Land and Building";
+  static const plant="Plant and Equipment";
+  static const security="Security and Financial Asset";
+  static const busInterest="Business and Interest";
+  static const jewellery="Jewellery and Precious Stone";
+  static const worksArt="Works of ART";
+  static const lifeInterest="Life Interest";
 
   static const String panValidation = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
   static const String emailValidation = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+  static const String normalName = "[a-z A-Z]";
 
   static const List<String> applicationList=[
     clearSelection,
     userNew,
     userOld,
+    userUpgradation,
   ];
 
   static const List<String> applicationModeList=[
@@ -101,7 +119,7 @@ class AppRes{
   static const List<String> employmentStatusList=[
     clearSelection,
     employer,
-    self_employed
+    selfEmployed
   ];
 
   static const List<String> memberShipList=[
@@ -109,6 +127,37 @@ class AppRes{
     submitted,
     pending,
     approved
+  ];
+
+  static const List<String> approvedList=[
+    clearSelection,
+    ugc,
+    aicte,
+  ];
+
+  static const List<String> plansList=[
+    clearSelection,
+    annualMember,
+    lifeMember,
+  ];
+
+  static const List<String> classOfAssetList=[
+    clearSelection,
+    associate,
+    fellow,
+    license,
+    studentMember,
+    rejection,
+  ];
+  static const List<String> classOfMembershipList=[
+    clearSelection,
+    landBuilding,
+    plant,
+    security,
+    busInterest,
+    jewellery,
+    worksArt,
+    lifeInterest,
   ];
 
   static const dropicon=Icon(Icons.arrow_drop_down_circle_outlined,color: ColorRes.blue,);

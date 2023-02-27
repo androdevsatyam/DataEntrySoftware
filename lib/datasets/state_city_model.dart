@@ -1,36 +1,41 @@
 import 'dart:convert';
 
+import '../utils/appres.dart';
+
 class StateCityModel {
   List<String> stateList = [];
   List<String> city = [];
 
   StateCityModel() {
-    var data = json.decode(StateData.city_statejson);
+    var data = json.decode(StateData.cityStatejson);
     if (data['data'] != null) {
       stateList = [];
-      stateList.add("CLEAR");
       data['data'].forEach((v) {
         if (!stateList.contains(v["state"])) stateList.add(v["state"]);
       });
     }
-    print(stateList);
+    stateList.sort();
+    stateList.insert(0, AppRes.clearSelection);
+    // print(stateList);
   }
 
   getCity(String state) {
-    var data = json.decode(StateData.city_statejson);
+    var data = json.decode(StateData.cityStatejson);
     if (data['data'] != null) {
       city = [];
       data['data'].forEach((v) {
         if (v['state'] == state) city.add(v["name"]);
       });
     }
-    print(city);
+    city.sort();
+    city.insert(0, AppRes.clearSelection);
+    // print(city);
     return city;
   }
 }
 
 class StateData {
-  static const String city_statejson = '''{
+  static const String cityStatejson = '''{
     "data": [
         {
             "id": "1",
